@@ -135,7 +135,7 @@ class FlexiFormField extends StatefulWidget {
   final int? maxLength;
 
   /// Maximum number of lines in input.
-  int? maxLine;
+  final int? maxLine;
 
   /// Minimum password length for validation.
   final int? minPasswordLength;
@@ -213,7 +213,7 @@ class FlexiFormField extends StatefulWidget {
   final VoidCallback? onPrefixIconPressed;
 
   /// Constructor with all configurable parameters.
-  FlexiFormField({
+  const FlexiFormField({
     super.key,
     this.hintText,
     this.controller,
@@ -320,24 +320,47 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
 
         /// Built-in input formatters for advanced use cases
         inputFormatters: widget.isDouble == true
-            ? <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*$'))]
+            ? <TextInputFormatter>[
+                FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*$')),
+              ]
             : widget.isPercentage == true
-            ? <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r'^0*([1-9][0-9]?|100)?(\.\d{0,2})?$|^0*\.\d{0,2}$'))]
+            ? <TextInputFormatter>[
+                FilteringTextInputFormatter.allow(
+                  RegExp(r'^0*([1-9][0-9]?|100)?(\.\d{0,2})?$|^0*\.\d{0,2}$'),
+                ),
+              ]
             : widget.isMobileNumber == true
-            ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(10)]
+            ? <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(10),
+              ]
             : widget.isGSTNumber == true
             ? [
                 TextInputFormatter.withFunction((oldValue, newValue) {
-                  return newValue.copyWith(text: newValue.text.toUpperCase(), selection: newValue.selection);
+                  return newValue.copyWith(
+                    text: newValue.text.toUpperCase(),
+                    selection: newValue.selection,
+                  );
                 }),
                 LengthLimitingTextInputFormatter(15),
               ]
             : widget.isPinCode == true
-            ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(6)]
+            ? <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(6),
+              ]
             : widget.isNumberOnly == true
-            ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly, LengthLimitingTextInputFormatter(widget.maxLength)]
+            ? <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(widget.maxLength),
+              ]
             : widget.isUpperCase == true
-            ? [TextInputFormatter.withFunction((oldValue, newValue) => newValue.copyWith(text: newValue.text.toUpperCase()))]
+            ? [
+                TextInputFormatter.withFunction(
+                  (oldValue, newValue) =>
+                      newValue.copyWith(text: newValue.text.toUpperCase()),
+                ),
+              ]
             : widget.inputFormatters ?? [],
 
         /// Maximum length (disabled when number-only)
@@ -359,7 +382,13 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
         cursorColor: widget.cursorColor ?? Colors.black,
         cursorHeight: widget.cursorHeight,
 
-        style: widget.style ?? const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400),
+        style:
+            widget.style ??
+            const TextStyle(
+              fontSize: 16,
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+            ),
 
         /// Auto validation mode
         autovalidateMode: widget.autoValidMode == null
@@ -370,7 +399,9 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
 
         /// Input decoration with advanced customization
         decoration: InputDecoration(
-          alignLabelWithHint: widget.alignLabelWithHint ?? (widget.prefixIcon != null ? false : true),
+          alignLabelWithHint:
+              widget.alignLabelWithHint ??
+              (widget.prefixIcon != null ? false : true),
           errorStyle: widget.errorStyle,
           floatingLabelStyle: widget.floatingLabelStyle,
           floatingLabelAlignment: widget.floatingLabelAlignment,
@@ -386,7 +417,9 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
                         children: [
                           TextSpan(
                             text: widget.label,
-                            style: widget.labelStyle ?? const TextStyle(color: Colors.grey),
+                            style:
+                                widget.labelStyle ??
+                                const TextStyle(color: Colors.grey),
                           ),
                           if (widget.isMandatory == true)
                             const TextSpan(
@@ -405,63 +438,112 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
               ? Colors.black12
               : widget.fillColor ?? Colors.white38,
 
-          labelStyle: widget.labelStyle ?? const TextStyle(color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w400, overflow: TextOverflow.ellipsis),
+          labelStyle:
+              widget.labelStyle ??
+              const TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                overflow: TextOverflow.ellipsis,
+              ),
 
-          hintStyle: widget.labelStyle ?? const TextStyle(color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w400),
+          hintStyle:
+              widget.labelStyle ??
+              const TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+              ),
 
           /// Border styles
           border:
               widget.border ??
               OutlineInputBorder(
-                borderRadius: widget.borderRadius ?? BorderRadius.circular(10.68),
-                borderSide: BorderSide(color: widget.focusedBorderColor ?? Colors.black87, width: 1.5),
+                borderRadius:
+                    widget.borderRadius ?? BorderRadius.circular(10.68),
+                borderSide: BorderSide(
+                  color: widget.focusedBorderColor ?? Colors.black87,
+                  width: 1.5,
+                ),
               ),
 
           focusedBorder:
               widget.focusedBorder ??
               OutlineInputBorder(
-                borderRadius: widget.borderRadius ?? BorderRadius.circular(10.68),
-                borderSide: BorderSide(color: widget.focusedBorderColor ?? Colors.black87, width: 1.5),
+                borderRadius:
+                    widget.borderRadius ?? BorderRadius.circular(10.68),
+                borderSide: BorderSide(
+                  color: widget.focusedBorderColor ?? Colors.black87,
+                  width: 1.5,
+                ),
               ),
 
           enabledBorder:
               widget.border ??
               OutlineInputBorder(
-                borderRadius: widget.borderRadius ?? BorderRadius.circular(10.68),
-                borderSide: const BorderSide(color: Color(0XFFD9D9D9), width: 0.5),
+                borderRadius:
+                    widget.borderRadius ?? BorderRadius.circular(10.68),
+                borderSide: const BorderSide(
+                  color: Color(0XFFD9D9D9),
+                  width: 0.5,
+                ),
               ),
 
           disabledBorder:
               widget.border ??
               OutlineInputBorder(
-                borderRadius: widget.borderRadius ?? BorderRadius.circular(10.68),
-                borderSide: const BorderSide(color: Color(0XFFD9D9D9), width: 0.5),
+                borderRadius:
+                    widget.borderRadius ?? BorderRadius.circular(10.68),
+                borderSide: const BorderSide(
+                  color: Color(0XFFD9D9D9),
+                  width: 0.5,
+                ),
               ),
 
           /// Hint with mandatory symbol
-          hintText: widget.isMandatory == true && widget.hintText != null ? "${widget.hintText}*" : widget.hintText,
+          hintText: widget.isMandatory == true && widget.hintText != null
+              ? "${widget.hintText}*"
+              : widget.hintText,
 
-          contentPadding: widget.contentPadding ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          contentPadding:
+              widget.contentPadding ??
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
 
           /// Prefix icon with custom tap handler
           prefixIcon: widget.prefixIcon != null
               ? Padding(
                   padding: const EdgeInsets.only(left: 12, right: 4),
-                  child: GestureDetector(onTap: widget.onPrefixIconPressed ?? () {}, child: widget.prefixIcon),
+                  child: GestureDetector(
+                    onTap: widget.onPrefixIconPressed ?? () {},
+                    child: widget.prefixIcon,
+                  ),
                 )
               : null,
 
-          prefixIconConstraints: const BoxConstraints(minWidth: 24, maxHeight: 40, maxWidth: 70, minHeight: 24),
+          prefixIconConstraints: const BoxConstraints(
+            minWidth: 24,
+            maxHeight: 40,
+            maxWidth: 70,
+            minHeight: 24,
+          ),
 
           /// Suffix icon with custom tap handler
           suffixIcon: widget.suffixIcon != null
               ? Padding(
                   padding: const EdgeInsets.only(right: 8),
-                  child: GestureDetector(onTap: widget.onSuffixIconPressed ?? () {}, child: widget.suffixIcon),
+                  child: GestureDetector(
+                    onTap: widget.onSuffixIconPressed ?? () {},
+                    child: widget.suffixIcon,
+                  ),
                 )
               : null,
 
-          suffixIconConstraints: const BoxConstraints(minWidth: 24, maxHeight: 40, maxWidth: 70, minHeight: 24),
+          suffixIconConstraints: const BoxConstraints(
+            minWidth: 24,
+            maxHeight: 40,
+            maxWidth: 70,
+            minHeight: 24,
+          ),
 
           isDense: true,
         ),
@@ -479,21 +561,30 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
             widget.validator ??
             (value) {
               // GST Number validation
-              if (value != null && value.isNotEmpty && widget.isGSTNumber == true) {
-                final gstRegex = RegExp(r'^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$');
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.isGSTNumber == true) {
+                final gstRegex = RegExp(
+                  r'^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$',
+                );
                 if (!gstRegex.hasMatch(value)) {
                   return 'Enter a valid GST number!';
                 }
               }
 
               // Mobile number validation
-              if (value != null && value.isNotEmpty && widget.isMobileNumber == true) {
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.isMobileNumber == true) {
                 if (!['6', '7', '8', '9'].contains(value[0])) {
-                  return widget.mobileNumberErrorMassage ?? "Enter a valid mobile number!";
+                  return widget.mobileNumberErrorMassage ??
+                      "Enter a valid mobile number!";
                 }
               }
 
-              if (value != null && value.isNotEmpty && widget.isMobileNumber == true) {
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.isMobileNumber == true) {
                 String mobilePattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
                 RegExp regex = RegExp(mobilePattern);
                 if (!regex.hasMatch(value)) {
@@ -511,29 +602,38 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
               }
 
               // Pincode validation
-              if (value != null && value.isNotEmpty && widget.isPinCode == true) {
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.isPinCode == true) {
                 if (value.length < 6) {
                   return 'Enter a valid pincode!';
                 }
               }
 
               // Confirm password validation
-              if (value != null && value.isNotEmpty && widget.isConfirmPassword == true) {
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.isConfirmPassword == true) {
                 if (widget.passWord != value) {
                   return 'Password and confirm-password should same!';
                 }
               }
 
               // Minimum password length
-              if (value != null && value.isNotEmpty && widget.minPasswordLength != null) {
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.minPasswordLength != null) {
                 if (value.length < widget.minPasswordLength!) {
                   return 'Enter ${widget.minPasswordLength} digit password!';
                 }
               }
 
               // Password format validation
-              if (value != null && value.isNotEmpty && widget.checkPasswordFormat == true) {
-                String passwordPattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[!@#\$%^&*(),.?":{}|<>])';
+              if (value != null &&
+                  value.isNotEmpty &&
+                  widget.checkPasswordFormat == true) {
+                String passwordPattern =
+                    r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[!@#\$%^&*(),.?":{}|<>])';
                 RegExp regex = RegExp(passwordPattern);
                 if (!regex.hasMatch(value)) {
                   return "Enter at least 1 uppercase letter, 1 lowercase letter, 1 special character and 1 number!";
@@ -543,7 +643,8 @@ class _FlexiFormFieldState extends State<FlexiFormField> {
               // Mandatory field validation
               if (widget.isMandatory == true) {
                 if (value == null || value.isEmpty) {
-                  return widget.validationErrorMassage ?? 'Enter ${widget.label ?? widget.hintText ?? ""}';
+                  return widget.validationErrorMassage ??
+                      'Enter ${widget.label ?? widget.hintText ?? ""}';
                 }
               }
 
