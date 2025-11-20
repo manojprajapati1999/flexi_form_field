@@ -1,0 +1,23 @@
+name: flexi_form_field
+description: "A flexible and customizable TextFormField widget for Flutter with built-in validation, formatting, mandatory fields, prefix/suffix icons, and more."
+version: 1.0.0
+homepage: https://github.com/manojprajapati1999/flexi_form_field
+repository: https://github.com/manojprajapati1999/flexi_form_field
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.svg
