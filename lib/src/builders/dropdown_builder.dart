@@ -3,7 +3,11 @@ import '../decorators.dart';
 import '../enums.dart';
 import '../theme.dart';
 
+/// A helper builder class for creating a standardized [DropdownButtonFormField] 
+/// that follows the Flexi design system.
 class FlexiDropdownBuilder {
+  /// Builds a [DropdownButtonFormField] with the specified [FlexiFieldStyle] 
+  /// and [FlexiFieldLayout].
   static Widget build<T>({
     required BuildContext context,
     required T? value,
