@@ -2,18 +2,39 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'flexi_button.dart';
 
+/// A premium timer widget with start, pause, resume, and stop functionality.
 class FlexiTimer extends StatefulWidget {
+  /// The background color of the timer buttons.
   final Color? buttonColor;
+
+  /// The text color of the timer buttons.
   final Color? buttonTextColor;
+
+  /// The text style for the timer display.
   final TextStyle? timerStyle;
+
+  /// Label for the start button.
   final String startLabel;
+
+  /// Label for the pause button.
   final String pauseLabel;
+
+  /// Label for the resume button.
   final String resumeLabel;
+
+  /// Label for the stop button.
   final String stopLabel;
+
+  /// Padding around the timer content.
   final EdgeInsetsGeometry? padding;
+
+  /// Margin around the timer container.
   final EdgeInsetsGeometry? margin;
+
+  /// Corner radius for the timer container.
   final double? borderRadius;
 
+  /// Creates a [FlexiTimer] with customizable labels and styles.
   const FlexiTimer({
     super.key,
     this.buttonColor,
@@ -185,9 +206,6 @@ class _FlexiTimerState extends State<FlexiTimer> {
   }
 
   Widget _buildButton(String label, Color color, VoidCallback onTap) {
-    final themeData = Theme.of(context);
-    final isDark = themeData.brightness == Brightness.dark;
-
     return FlexiButton(
       width: 110,
       height: 40,
