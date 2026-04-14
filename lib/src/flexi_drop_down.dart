@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import 'builders/text_field_builder.dart';
+import 'builders/dropdown_builder.dart';
 import 'enums.dart';
 import 'theme.dart';
 
-class FlexiFormField extends StatelessWidget {
+class FlexiDropDown<T> extends StatelessWidget {
   final FlexiFieldStyle fieldStyle;
   final FlexiFieldLayout fieldLayout;
   final FlexiFieldWrapper wrapper;
@@ -13,48 +12,29 @@ class FlexiFormField extends StatelessWidget {
   final String? label;
   final String? externalLabel;
   final String? hint;
-  final TextEditingController? controller;
-  final bool obscureText;
+  final List<DropdownMenuItem<T>>? items;
+  final T? value;
+  final ValueChanged<T?>? onChanged;
   final bool enabled;
-  final bool readOnly;
-  final int maxLines;
-  final int? maxLength;
-  final TextInputType? keyboardType;
-  final List<TextInputFormatter>? inputFormatters;
   final bool isMandatory;
-  final bool isNumber;
-  final bool isDouble;
-  final bool isMobile;
-  final bool isEmail;
-  final bool isPinCode;
-  final bool isPercentage;
-  final bool isGST;
-  final bool uppercaseOnly;
-  final bool lowercaseOnly;
-  final bool denySpace;
-  final bool autoValidate;
   final EdgeInsetsGeometry? contentPadding;
   final EdgeInsetsGeometry? margin;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final BoxConstraints? suffixIconConstraints;
-  final VoidCallback? onTap;
-  final String? Function(String?)? validator;
-  final ValueChanged<String>? onChanged;
 
   // Premium granular styles
   final double? fontSize;
   final double? borderRadius;
   final Color? fillColor;
   final Color? cursorColor;
-  final double? cursorHeight;
   final FloatingLabelAlignment? floatingLabelAlignment;
   final TextStyle? style;
   final TextStyle? labelStyle;
   final TextStyle? hintStyle;
   final TextStyle? floatingLabelStyle;
 
-  const FlexiFormField({
+  const FlexiDropDown({
     super.key,
     this.fieldStyle = FlexiFieldStyle.outline,
     this.fieldLayout = FlexiFieldLayout.floating,
@@ -63,39 +43,20 @@ class FlexiFormField extends StatelessWidget {
     this.label,
     this.externalLabel,
     this.hint,
-    this.controller,
-    this.obscureText = false,
+    this.items,
+    this.value,
+    this.onChanged,
     this.enabled = true,
-    this.readOnly = false,
-    this.maxLines = 1,
-    this.maxLength,
-    this.keyboardType,
-    this.inputFormatters,
     this.isMandatory = false,
-    this.isNumber = false,
-    this.isDouble = false,
-    this.isMobile = false,
-    this.isEmail = false,
-    this.isPinCode = false,
-    this.isPercentage = false,
-    this.isGST = false,
-    this.uppercaseOnly = false,
-    this.lowercaseOnly = false,
-    this.denySpace = false,
-    this.autoValidate = false,
     this.contentPadding,
     this.margin,
     this.prefixIcon,
     this.suffixIcon,
     this.suffixIconConstraints,
-    this.onTap,
-    this.validator,
-    this.onChanged,
     this.fontSize,
     this.borderRadius,
     this.fillColor,
     this.cursorColor,
-    this.cursorHeight,
     this.floatingLabelAlignment,
     this.style,
     this.labelStyle,
@@ -107,48 +68,29 @@ class FlexiFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     final appliedTheme = theme ?? const FlexiFormTheme();
 
-    Widget field = FlexiTextFieldBuilder.build(
+    Widget field = FlexiDropdownBuilder.build<T>(
       context: context,
-      fieldLayout: fieldLayout,
-      controller: controller,
+      value: value,
+      items: items ?? const [],
       label: label,
       externalLabel: externalLabel,
       hint: hint,
       style: fieldStyle,
+      fieldLayout: fieldLayout,
       theme: appliedTheme,
-      obscureText: obscureText,
-      enabled: enabled,
-      readOnly: readOnly,
-      maxLines: maxLines,
-      maxLength: maxLength,
-      keyboardType: keyboardType,
-      inputFormatters: inputFormatters,
-      isMandatory: isMandatory,
-      isNumber: isNumber,
-      isDouble: isDouble,
-      isMobile: isMobile,
-      isEmail: isEmail,
-      isPinCode: isPinCode,
-      isPercentage: isPercentage,
-      isGST: isGST,
-      uppercaseOnly: uppercaseOnly,
-      lowercaseOnly: lowercaseOnly,
-      denySpace: denySpace,
-      autoValidate: autoValidate,
+      onChanged: onChanged,
       contentPadding: contentPadding,
       margin: margin,
+      enabled: enabled,
+      isMandatory: isMandatory,
       prefixIcon: prefixIcon,
       suffixIcon: suffixIcon,
       suffixIconConstraints: suffixIconConstraints,
-      onTap: onTap,
-      onChanged: onChanged,
-      validator: validator,
       // Pass premium styles
       fontSize: fontSize,
       borderRadius: borderRadius,
       fillColor: fillColor,
       cursorColor: cursorColor,
-      cursorHeight: cursorHeight,
       floatingLabelAlignment: floatingLabelAlignment,
       textStyle: style,
       labelStyle: labelStyle,
