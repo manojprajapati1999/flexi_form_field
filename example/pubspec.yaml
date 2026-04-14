@@ -1,0 +1,25 @@
+name: flexi_form_field_example
+description: Example app for flexi_form_field package
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flexi_form_field:
+    path: ../
+  image_picker: ^1.2.1
+  flutter_typeahead: ^5.2.0
+  flutter_keyboard_visibility: ^6.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
