@@ -1,3 +1,11 @@
+## 3.0.1
+
+🛡️ **Maintenance & Quality Improvement**
+
+- **Analyzer Cleanup**: Resolved all primary `dart analyze` warnings, including unused local variables in `FlexiTimer` and `FlexiTextFieldBuilder`.
+- **Documentation Overhaul**: Added comprehensive documentation comments (`///`) to core public classes and methods (`FlexiDropdownBuilder`, `FlexiTimer`, etc.).
+- **Improved Alignment**: Finalized the 48px standard spacing across all prefix and suffix icon zones for total visual consistency.
+
 ## 3.0.0
 
 🚀 **Major Design Overhaul - Premium Monochrome System**

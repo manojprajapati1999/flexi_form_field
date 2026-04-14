@@ -1,12 +1,12 @@
-# flexi_form_field (v3.0.0)
+# flexi_form_field (v3.0.1)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
 ## 🖼 Showcase
 
-| Form Demo | Text Fields | Auto-Complete | Date Pickers | Components |
-| :---: | :---: | :---: | :---: | :---: |
-| ![Form Demo](assets/images/form_demo.jpg) | ![Text Field](assets/images/text_field.jpg) | ![Auto Complete](assets/images/auto_complete.jpg) | ![Date Picker](assets/images/date_picker.jpg) | ![Other](assets/images/other.jpg) |
+|                                                              Form Demo                                                              |                                                         Text Fields                                                          |                                                          Auto-Complete                                                          |                                                         Date Pickers                                                          |                                                       Components                                                        |
+|:-----------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
+| ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg) |
 
 ---
 
@@ -33,7 +33,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^3.0.0
+  flexi_form_field: ^3.0.1
 ```
 
 Then run:
