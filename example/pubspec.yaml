@@ -12,7 +12,7 @@ dependencies:
   flexi_form_field:
     path: ../
   image_picker: ^1.2.1
-  flutter_typeahead: ^5.2.0
+  flutter_typeahead: ^6.0.0
   flutter_keyboard_visibility: ^6.0.0
 
 dev_dependencies:
