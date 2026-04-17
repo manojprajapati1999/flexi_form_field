@@ -5,51 +5,136 @@ import 'decorators.dart';
 import 'enums.dart';
 import 'theme.dart';
 
+/// A premium autocomplete input widget that provides suggestions as the user types.
+///
+/// [FlexiAutoComplete] integrates with a suggestion engine to provide a smooth
+/// selection experience. It supports custom item builders, filtering logic, 
+/// and rich styling to match the Flexi design system.
 class FlexiAutoComplete<T> extends StatefulWidget {
+  /// The list of options to suggest to the user.
   final List<T> options;
+
+  /// A function that converts an option into a human-readable string.
   final String Function(T e) itemLabelBuilder;
+
+  /// Controller for the text being edited.
   final TextEditingController controller;
+
+  /// The currently selected value.
   final T? value;
+
+  /// Optional focus node for the input field.
   final FocusNode? focusNode;
+
+  /// Focus node to request after an item is selected.
   final FocusNode? nextFocusNode;
+
+  /// Custom error text to display when validation fails.
   final String? errorText;
+
+  /// Whether to validate the input automatically.
   final bool? autoValidate;
+
+  /// Custom widget to use as the label.
   final Widget? labelWidget;
+
+  /// A label displayed outside (above) the input field.
   final String? externalLabel;
+
+  /// The label displayed inside the input border (Material style).
   final String? label;
+
+  /// Hint text shown when the input is empty.
   final String? hint;
+
+  /// Whether this field is marked as mandatory (shows '*' indicator).
   final bool? isMandatory;
+
+  /// Whether the field is interactive.
   final bool? enabled;
+
+  /// Whether to show a clear button when text is present.
   final bool? showClearButton;
+
+  /// Restricts input to decimal/double values.
   final bool? isDouble;
+
+  /// Restricts input to numeric characters.
   final bool? numberOnly;
+
+  /// Pre-configured validation and formatting for mobile numbers.
   final bool? isMobileNumber;
+
+  /// Callback when the text changes or an item is selected.
   final Function(T? e, String text)? onChanged;
+
+  /// Callback specifically for when an item is selected from the list.
   final Function(T? value)? onSelected;
+
+  /// Outer margin for the form field container.
   final EdgeInsetsGeometry? margin;
+
+  /// Internal padding for the input field.
   final EdgeInsets? contentPadding;
+
+  /// Height override for the input field.
   final double? height;
+
+  /// Whether the input field background is filled.
   final bool? filled;
+
+  /// Background fill color override.
   final Color? fillColor;
+
+  /// Height of the cursor.
   final double? cursorHeight;
+
+  /// Alignment logic for the floating label.
   final FloatingLabelAlignment? floatingLabelAlignment;
+
+  /// Full text style override for the input text.
   final TextStyle? style;
+
+  /// Style override for the label text.
   final TextStyle? labelStyle;
+
+  /// Style override for the hint text.
   final TextStyle? hintStyle;
+
+  /// Style override for the floating label.
   final TextStyle? floatingLabelStyle;
+
+  /// Whether to hide the suggestion list when no matches are found.
   final bool? hideEmptyListBanner;
+
+  /// Border style override.
   final InputBorder? border;
+
+  /// Border style override when focused.
   final InputBorder? focusBorder;
+
+  /// Color of the suffix icon.
   final Color? suffixIconColor;
+
+  /// Color of the cursor.
   final Color? cursorColor;
+
+  /// Font size override for the input text.
   final double? fontSize;
+
+  /// Border radius override for the input field.
   final double? borderRadius;
+
+  /// Widget shown at the beginning of the input field.
   final Widget? prefixIcon;
+
+  /// The visual style of the input border (e.g., outline, filled, rounded).
   final FlexiFieldStyle fieldStyle;
 
   /// Optional theme override for this specific field.
   final FlexiFormTheme? theme;
 
+  /// Creates a [FlexiAutoComplete] widget for rich selection-from-list experiences.
   const FlexiAutoComplete({
     super.key,
     required this.controller,
@@ -176,7 +261,6 @@ class _FlexiAutoCompleteState<T> extends State<FlexiAutoComplete<T>> {
             autoFlipMinHeight: 100,
             autoFlipDirection: true,
             animationDuration: const Duration(milliseconds: 500),
-            hideWithKeyboard: true,
             hideOnSelect: true,
             suggestionsController: _suggestionsController,
             builder: (context, currentController, focusNode) {
@@ -241,7 +325,8 @@ class _FlexiAutoCompleteState<T> extends State<FlexiAutoComplete<T>> {
                       (widget.options.isEmpty
                           ? (isDark ? Colors.white10 : Colors.black12)
                           : (isDark
-                                ? Colors.white.withValues(alpha: 0.05)
+                                // ignore: deprecated_member_use
+                                ? Colors.white.withOpacity(0.05)
                                 : themeData.colorScheme.surface)),
 
                   filled:

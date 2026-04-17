@@ -1,4 +1,4 @@
-# flexi_form_field (v3.0.1)
+# flexi_form_field (v3.0.2)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
@@ -6,7 +6,7 @@ A flexible and highly customizable Flutter form widget suite with built-in valid
 
 |                                                              Form Demo                                                              |                                                         Text Fields                                                          |                                                          Auto-Complete                                                          |                                                         Date Pickers                                                          |                                                       Components                                                        |
 |:-----------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
-| ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg) | ![Flexi Form Field](https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg) |
+| <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg" height="400"> |
 
 ---
 
@@ -33,7 +33,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^3.0.1
+  flexi_form_field: ^3.0.2
 ```
 
 Then run:
@@ -541,7 +541,7 @@ FlexiTimer(
 | Package | Purpose |
 |---|---|
 | `intl: ^0.20.2` | Date formatting for `FlexiDatePicker` and `FlexiDateTimePicker` |
-| `flutter_typeahead: ^5.2.0` | Suggestion list engine for `FlexiAutoComplete` |
+| `flutter_typeahead: ^6.0.0` | Suggestion list engine for `FlexiAutoComplete` |
 
 ---
 

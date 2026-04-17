@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'flexi_button.dart';
 
 /// A premium timer widget with start, pause, resume, and stop functionality.
+/// A premium timer widget with start, pause, resume, and stop functionality.
+///
+/// [FlexiTimer] provides a complete, styled timer interface that can be 
+/// integrated into forms or standalone views. It supports custom styling 
+/// for the display and control buttons.
 class FlexiTimer extends StatefulWidget {
   /// The background color of the timer buttons.
   final Color? buttonColor;
@@ -13,22 +18,22 @@ class FlexiTimer extends StatefulWidget {
   /// The text style for the timer display.
   final TextStyle? timerStyle;
 
-  /// Label for the start button.
+  /// Label for the start button (default: "Start").
   final String startLabel;
 
-  /// Label for the pause button.
+  /// Label for the pause button (default: "Pause").
   final String pauseLabel;
 
-  /// Label for the resume button.
+  /// Label for the resume button (default: "Resume").
   final String resumeLabel;
 
-  /// Label for the stop button.
+  /// Label for the stop button (default: "Stop").
   final String stopLabel;
 
-  /// Padding around the timer content.
+  /// Internal padding around the timer content.
   final EdgeInsetsGeometry? padding;
 
-  /// Margin around the timer container.
+  /// Outer margin around the timer container.
   final EdgeInsetsGeometry? margin;
 
   /// Corner radius for the timer container.
@@ -133,7 +138,8 @@ class _FlexiTimerState extends State<FlexiTimer> {
     final isDark = themeData.brightness == Brightness.dark;
 
     final effectiveBgColor = isDark
-        ? Colors.white.withValues(alpha: 0.05)
+        // ignore: deprecated_member_use
+        ? Colors.white.withOpacity(0.05)
         : Colors.white;
     final effectiveTextColor = isDark ? Colors.white : Colors.black;
     final radius = widget.borderRadius ?? 16.0;
@@ -149,7 +155,8 @@ class _FlexiTimerState extends State<FlexiTimer> {
             ? null
             : [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
+            // ignore: deprecated_member_use
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),

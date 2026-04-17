@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'enums.dart';
 import 'theme.dart';
 
+/// A utility class that provides pre-configured [InputBorder] decorators 
+/// based on the [FlexiFieldStyle] and [FlexiFormTheme].
 class FlexiDecorators {
+  /// Returns a standard [InputBorder] for the given style and theme.
   static InputBorder border(
     FlexiFieldStyle style,
     FlexiFormTheme theme, {
@@ -41,6 +44,7 @@ class FlexiDecorators {
     }
   }
 
+  /// Returns an [InputBorder] for when the input field is focused.
   static InputBorder focusedBorder(
     FlexiFieldStyle style,
     FlexiFormTheme theme, {
@@ -79,6 +83,7 @@ class FlexiDecorators {
     }
   }
 
+  /// Returns an [InputBorder] for when the input field is enabled but not focused.
   static InputBorder enabledBorder(
     FlexiFieldStyle style,
     FlexiFormTheme theme, {
@@ -114,6 +119,7 @@ class FlexiDecorators {
     }
   }
 
+  /// Returns an [InputBorder] for when the input field is disabled.
   static InputBorder disabledBorder(
     FlexiFieldStyle style,
     FlexiFormTheme theme, {
@@ -131,13 +137,15 @@ class FlexiDecorators {
 
       case FlexiFieldStyle.underline:
         return UnderlineInputBorder(
-          borderSide: BorderSide(color: color.withValues(alpha: 0.1)),
+          // ignore: deprecated_member_use
+          borderSide: BorderSide(color: color.withOpacity(0.1)),
         );
 
       case FlexiFieldStyle.rounded:
         return OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 30),
-          borderSide: BorderSide(color: color.withValues(alpha: 0.1)),
+          // ignore: deprecated_member_use
+          borderSide: BorderSide(color: color.withOpacity(0.1)),
         );
 
       case FlexiFieldStyle.minimal:
@@ -146,11 +154,13 @@ class FlexiDecorators {
       default:
         return OutlineInputBorder(
           borderRadius: BorderRadius.circular(effectiveRadius),
-          borderSide: BorderSide(color: color.withValues(alpha: 0.1)),
+          // ignore: deprecated_member_use
+          borderSide: BorderSide(color: color.withOpacity(0.1)),
         );
     }
   }
 
+  /// Returns an [InputBorder] for when the input field has an error.
   static InputBorder errorBorder(
     FlexiFieldStyle style,
     FlexiFormTheme theme, {

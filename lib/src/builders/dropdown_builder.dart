@@ -5,9 +5,14 @@ import '../theme.dart';
 
 /// A helper builder class for creating a standardized [DropdownButtonFormField] 
 /// that follows the Flexi design system.
+/// An internal builder class that handles the complex construction of 
+/// [DropdownButtonFormField]s within the Flexi design system.
+///
+/// [FlexiDropdownBuilder] abstracts the logic for layout selection, decoration,
+/// and menu styling, ensuring that dropdowns match the established design language.
 class FlexiDropdownBuilder {
-  /// Builds a [DropdownButtonFormField] with the specified [FlexiFieldStyle] 
-  /// and [FlexiFieldLayout].
+  /// Builds a [Widget] containing a [DropdownButtonFormField] with the 
+  /// specified styles and behaviors.
   static Widget build<T>({
     required BuildContext context,
     required T? value,
@@ -49,6 +54,7 @@ class FlexiDropdownBuilder {
     final effectiveRadius = borderRadius ?? theme.borderRadius.topLeft.x;
 
     final dropdown = DropdownButtonFormField<T>(
+      // ignore: deprecated_member_use
       value: value,
       items: items.map((item) {
         return DropdownMenuItem<T>(
@@ -63,7 +69,7 @@ class FlexiDropdownBuilder {
               if (item != items.last) ...[
                 const SizedBox(height: 8),
                 Divider(
-                  color: themeData.dividerColor.withValues(alpha: 0.5),
+                  color: themeData.dividerColor.withOpacity(0.5), // ignore: deprecated_member_use
                   height: 1,
                   thickness: 0.5,
                 ),
@@ -244,7 +250,8 @@ class FlexiDropdownBuilder {
       hintStyle: hintStyle ?? TextStyle(fontSize: 16, color: themeData.hintColor, overflow: TextOverflow.ellipsis),
       floatingLabelBehavior: layout == FlexiFieldLayout.floating ? FloatingLabelBehavior.auto : FloatingLabelBehavior.never,
       filled: fillColor != null || theme.fillColor != null || isDark || style == FlexiFieldStyle.filled,
-      fillColor: fillColor ?? theme.fillColor ?? (isDark ? Colors.white.withValues(alpha: 0.05) : themeData.colorScheme.surface),
+      // ignore: deprecated_member_use
+      fillColor: fillColor ?? theme.fillColor ?? (isDark ? Colors.white.withOpacity(0.05) : themeData.colorScheme.surface),
       border: FlexiDecorators.border(style, theme, color: cursorColor, borderRadius: borderRadius),
       focusedBorder: FlexiDecorators.focusedBorder(style, theme, color: cursorColor, borderRadius: borderRadius),
       enabledBorder: FlexiDecorators.enabledBorder(style, theme, color: themeData.dividerColor, borderRadius: borderRadius),

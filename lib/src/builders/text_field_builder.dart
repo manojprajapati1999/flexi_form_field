@@ -4,7 +4,14 @@ import '../decorators.dart';
 import '../enums.dart';
 import '../theme.dart';
 
+/// An internal builder class that handles the complex construction of [TextFormField]s
+/// within the Flexi design system.
+///
+/// [FlexiTextFieldBuilder] abstracts the logic for input decoration, formatting,
+/// validation, and layout, ensuring a consistent look and feel across different
+/// input types.
 class FlexiTextFieldBuilder {
+  /// Builds a [Widget] containing a [TextFormField] with the specified styles and behaviors.
   static Widget build({
     required BuildContext context,
     TextEditingController? controller,
@@ -304,7 +311,7 @@ class FlexiTextFieldBuilder {
           fillColor ??
           theme.fillColor ??
           (isDark
-              ? Colors.white.withValues(alpha: 0.05)
+              ? Colors.white.withOpacity(0.05) // ignore: deprecated_member_use
               : themeData.colorScheme.surface),
 
       border: FlexiDecorators.border(

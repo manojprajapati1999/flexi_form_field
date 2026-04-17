@@ -4,42 +4,115 @@ import 'decorators.dart';
 import 'enums.dart';
 import 'theme.dart';
 
+/// A premium combined date and time picker input widget.
+///
+/// [FlexiDateTimePicker] allows users to select both a date and a time in 
+/// sequence, formatting the result into a single string. It follows the 
+/// Flexi design system for consistent aesthetics.
 class FlexiDateTimePicker extends StatelessWidget {
+  /// Controller for the selected date and time text.
   final TextEditingController controller;
+
+  /// The label displayed inside the input border (Material style).
   final String? label;
+
+  /// A label displayed outside (above) the input field.
   final String? externalLabel;
+
+  /// Hint text shown when the input is empty.
   final String? hint;
+
+  /// Custom error text to display when validation fails.
   final String? errorText;
+
+  /// Whether this field is marked as mandatory (shows '*' indicator).
   final bool isMandatory;
+
+  /// Whether the field is interactive.
   final bool enabled;
+
+  /// Whether to validate the input automatically.
   final bool autoValidate;
+
+  /// Whether to show a clear button when a value is selected.
   final bool showClearButton;
+
+  /// The earliest date the user is permitted to pick.
   final DateTime? firstDate;
+
+  /// The latest date the user is permitted to pick.
   final DateTime? lastDate;
+
+  /// The date that is initially selected when the picker opens.
   final DateTime? initialDate;
+
+  /// The date that is considered "today" in the picker.
   final DateTime? currentDate;
+
+  /// The initial time selected when the time picker opens.
   final TimeOfDay? initialTime;
+
+  /// The format used to display the date and time (default: 'dd-MM-yyyy HH:mm').
   final String dateFormat;
+
+  /// Optional focus node for the input field.
   final FocusNode? focusNode;
+
+  /// Focus node to request after a selection is made.
   final FocusNode? nextFocusNode;
+
+  /// Internal padding for the input field.
   final EdgeInsetsGeometry? contentPadding;
+
+  /// Outer margin for the form field container.
   final EdgeInsetsGeometry? margin;
+
+  /// Widget shown at the beginning of the input field.
   final Widget? prefixIcon;
+
+  /// Custom validation logic for the input.
   final String? Function(String?)? validator;
+
+  /// Callback when a date and time are selected.
   final Function(DateTime? date, String stringDate)? onSelect;
+
+  /// Optional theme override for this specific field.
   final FlexiFormTheme? theme;
+
+  /// Font size override for the input text.
   final double? fontSize;
+
+  /// Border radius override for the input field.
   final double? borderRadius;
+
+  /// Background fill color override.
   final Color? fillColor;
+
+  /// Color of the cursor.
   final Color? cursorColor;
+
+  /// Height of the cursor.
   final double? cursorHeight;
+
+  /// Alignment logic for the floating label.
   final FloatingLabelAlignment? floatingLabelAlignment;
+
+  /// Full text style override for the input text.
   final TextStyle? style;
+
+  /// Style override for the label text.
   final TextStyle? labelStyle;
+
+  /// Style override for the hint text.
   final TextStyle? hintStyle;
+
+  /// Style override for the floating label.
   final TextStyle? floatingLabelStyle;
+
+  /// The visual style of the input border (e.g., outline, filled, rounded).
   final FlexiFieldStyle fieldStyle;
 
+  /// Creates a [FlexiDateTimePicker] for combined date and time selection.
   const FlexiDateTimePicker({
     super.key,
     required this.controller,
@@ -145,12 +218,7 @@ class FlexiDateTimePicker extends StatelessWidget {
               ),
               floatingLabelAlignment: floatingLabelAlignment,
 
-              fillColor:
-                  fillColor ??
-                  appliedFlexiTheme.fillColor ??
-                  (isDark
-                      ? Colors.white.withValues(alpha: 0.05)
-                      : themeData.colorScheme.surface),
+              fillColor: fillColor ?? appliedFlexiTheme.fillColor ?? (isDark ? Colors.white.withOpacity(0.05) : themeData.colorScheme.surface), // ignore: deprecated_member_use
 
               filled:
                   fillColor != null ||
@@ -297,7 +365,8 @@ class FlexiDateTimePicker extends StatelessWidget {
                       },
                     );
 
-                    if (date != null && context.mounted) {
+                    if (date != null) {
+                      if (!context.mounted) return;
                       TimeOfDay? time = await showTimePicker(
                         context: context,
                         initialTime: initialTime ?? TimeOfDay.now(),
@@ -327,6 +396,7 @@ class FlexiDateTimePicker extends StatelessWidget {
                         controller.text = formatted;
                         onSelect?.call(finalDateTime, formatted);
                         if (nextFocusNode != null) {
+                          if (!context.mounted) return;
                           FocusScope.of(context).requestFocus(nextFocusNode);
                         }
                       }

@@ -1,3 +1,13 @@
+## 3.0.2
+
+🌍 **Platform Support & Modernization**
+
+- **Multi-Platform Support**: Restored full compatibility for Android, iOS, Web, Windows, macOS, and Linux.
+- **SDK Compatibility**: Lowered Dart SDK constraint to `^3.5.0` and gracefully handled `Color.withOpacity` depreciation for older Flutter versions.
+- **Dependency Update**: Upgraded `flutter_typeahead` to `^6.0.0` and resolved all breaking changes in the autocomplete widget.
+- **Static Analysis**: Achieved a clean bill of health with 0 warnings/errors in `dart analyze`.
+- **Exhaustive Documentation**: Completed DartDoc coverage for all public widgets, properties, and builders to improve pub.dev scoring.
+
 ## 3.0.1
 
 🛡️ **Maintenance & Quality Improvement**

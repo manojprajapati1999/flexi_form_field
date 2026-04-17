@@ -1,25 +1,54 @@
 import 'package:flutter/material.dart';
 
+/// A premium, segmented tab bar widget with smooth transitions and rich styling.
+///
+/// [FlexiTabBar] provides a modern alternative to traditional tab bars, 
+/// featuring a capsule-like design with animated selection indicators 
+/// and support for custom gradients.
 class FlexiTabBar extends StatelessWidget {
+  /// The list of labels for each tab.
   final List<String> tabs;
+
+  /// Callback when the user selects a tab.
   final Function(int index) onChanged;
+
+  /// The index of the currently selected tab.
   final int currentIndex;
 
-  // Colors
+  /// Color of the active tab indicator.
   final Color? activeColor;
+
+  /// Color of the inactive tabs.
   final Color? inactiveColor;
+
+  /// Background color of the entire tab bar container.
   final Color? backgroundColor;
+
+  /// Text color for the active tab label.
   final Color? activeTextColor;
+
+  /// Text color for the inactive tab labels.
   final Color? inactiveTextColor;
+
+  /// Optional gradient for the active tab indicator.
   final Gradient? activeGradient;
 
-  // Layout
+  /// Font size for the tab labels.
   final double? fontSize;
+
+  /// Outer margin for the tab bar container.
   final EdgeInsetsGeometry? margin;
+
+  /// Internal padding for the tab bar container.
   final EdgeInsetsGeometry? padding;
+
+  /// Border radius for the tab bar corners.
   final double? borderRadius;
+
+  /// Height override for the tab bar.
   final double? height;
 
+  /// Creates a [FlexiTabBar] with premium aesthetics and smooth animations.
   const FlexiTabBar({
     super.key,
     required this.tabs,
@@ -47,7 +76,8 @@ class FlexiTabBar extends StatelessWidget {
         activeColor ?? (isDark ? Colors.white : Colors.black);
     final effectiveBgColor =
         backgroundColor ??
-        (isDark ? Colors.white.withValues(alpha: 0.1) : Colors.grey.shade200);
+        // ignore: deprecated_member_use
+        (isDark ? Colors.white.withOpacity(0.1) : Colors.grey.shade200);
 
     final effectiveActiveText =
         activeTextColor ?? (isDark ? Colors.black : Colors.white);
@@ -87,7 +117,8 @@ class FlexiTabBar extends StatelessWidget {
                   boxShadow: isActive && !isDark
                       ? [
                           BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.1),
+                            // ignore: deprecated_member_use
+                            color: Colors.black.withOpacity(0.1),
                             blurRadius: 4,
                             offset: const Offset(0, 2),
                           ),

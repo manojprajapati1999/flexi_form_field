@@ -4,36 +4,90 @@ import 'builders/dropdown_builder.dart';
 import 'enums.dart';
 import 'theme.dart';
 
+/// A premium dropdown selection widget with rich styling and built-in layout options.
+///
+/// [FlexiDropDown] provides a consistent selection experience, supporting various
+/// border styles, layouts (floating or external), and container wrappers (cards).
 class FlexiDropDown<T> extends StatelessWidget {
+  /// The visual style of the input border (e.g., outline, filled, rounded).
   final FlexiFieldStyle fieldStyle;
+
+  /// The placement of the label relative to the dropdown field.
   final FlexiFieldLayout fieldLayout;
+
+  /// An optional container wrapper for the entire dropdown field (e.g., card, outlined).
   final FlexiFieldWrapper wrapper;
+
+  /// Optional theme override for this specific field.
   final FlexiFormTheme? theme;
+
+  /// The label displayed inside the input border (Material style).
   final String? label;
+
+  /// A label displayed outside (above) the input field.
   final String? externalLabel;
+
+  /// Hint text shown when no value is selected.
   final String? hint;
+
+  /// The list of items to display in the dropdown menu.
   final List<DropdownMenuItem<T>>? items;
+
+  /// The currently selected value.
   final T? value;
+
+  /// Callback when the selected value changes.
   final ValueChanged<T?>? onChanged;
+
+  /// Whether the field is interactive.
   final bool enabled;
+
+  /// Whether this field is marked as mandatory (shows '*' indicator).
   final bool isMandatory;
+
+  /// Internal padding for the input field.
   final EdgeInsetsGeometry? contentPadding;
+
+  /// Outer margin for the form field container.
   final EdgeInsetsGeometry? margin;
+
+  /// Widget shown at the beginning of the input field.
   final Widget? prefixIcon;
+
+  /// Widget shown at the end of the input field (typically the dropdown arrow).
   final Widget? suffixIcon;
+
+  /// Constraints for the suffix icon container.
   final BoxConstraints? suffixIconConstraints;
 
-  // Premium granular styles
+  /// Font size override for the input text.
   final double? fontSize;
+
+  /// Border radius override for the input field.
   final double? borderRadius;
+
+  /// Background fill color override.
   final Color? fillColor;
+
+  /// Color of the cursor.
   final Color? cursorColor;
+
+  /// Alignment logic for the floating label.
   final FloatingLabelAlignment? floatingLabelAlignment;
+
+  /// Full text style override for the selected item text.
   final TextStyle? style;
+
+  /// Style override for the label text.
   final TextStyle? labelStyle;
+
+  /// Style override for the hint text.
   final TextStyle? hintStyle;
+
+  /// Style override for the floating label.
   final TextStyle? floatingLabelStyle;
 
+  /// Creates a [FlexiDropDown] widget with granular control over its aesthetics.
   const FlexiDropDown({
     super.key,
     this.fieldStyle = FlexiFieldStyle.outline,

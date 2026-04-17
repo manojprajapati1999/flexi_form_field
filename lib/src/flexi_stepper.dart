@@ -1,25 +1,54 @@
 import 'package:flutter/material.dart';
 
+/// A premium horizontally-scrolling stepper widget.
+///
+/// [FlexiStepper] provides a sleek way to navigate through multiple steps in 
+/// a process. It supports smooth scrolling, automatic alignment, and 
+/// rich customization for active and inactive states.
 class FlexiStepper extends StatefulWidget {
+  /// The index of the currently active step.
   final int currentStep;
+
+  /// The list of titles for each step in the process.
   final List<String> stepTitles;
+
+  /// Callback when a step is tapped by the user.
   final Function(int index)? onStepChange;
 
-  // Colors
+  /// Color of the active step indicator.
   final Color? activeColor;
+
+  /// Color of the inactive step indicators.
   final Color? inactiveColor;
+
+  /// Text color for the active step label.
   final Color? activeTextColor;
+
+  /// Text color for the inactive step labels.
   final Color? inactiveTextColor;
 
-  // Layout
+  /// The height of the stepper container (default: 36).
   final double height;
+
+  /// The duration of the scroll animation when changing steps (default: 500ms).
   final Duration scrollDuration;
+
+  /// The curve used for the scroll animation (default: EasingInOut).
   final Curve scrollCurve;
+
+  /// The text style for the step labels.
   final TextStyle? textStyle;
+
+  /// The border radius for the step indicators.
   final double? borderRadius;
+
+  /// Internal padding for the stepper container.
   final EdgeInsetsGeometry? padding;
+
+  /// Outer margin for the stepper container.
   final EdgeInsetsGeometry? margin;
 
+  /// Creates a [FlexiStepper] widget with advanced scrolling and premium aesthetics.
   const FlexiStepper({
     super.key,
     required this.currentStep,

@@ -3,37 +3,100 @@ import 'decorators.dart';
 import 'enums.dart';
 import 'theme.dart';
 
+/// A premium time picker input widget that provides a standard Material time selection
+/// experience within the Flexi design system.
+///
+/// [FlexiTimePicker] simplifies time selection by handling the picker dialog 
+/// and formatting the result into the associated controller.
 class FlexiTimePicker extends StatelessWidget {
+  /// Controller for the selected time text.
   final TextEditingController controller;
+
+  /// The label displayed inside the input border (Material style).
   final String? label;
+
+  /// A label displayed outside (above) the input field.
   final String? externalLabel;
+
+  /// Hint text shown when the input is empty.
   final String? hint;
+
+  /// Custom error text to display when validation fails.
   final String? errorText;
+
+  /// Whether this field is marked as mandatory (shows '*' indicator).
   final bool isMandatory;
+
+  /// Whether the field is interactive.
   final bool enabled;
+
+  /// Whether to validate the input automatically.
   final bool autoValidate;
+
+  /// Whether to show a clear button when a time is selected.
   final bool showClearButton;
+
+  /// The time that is initially selected when the picker opens.
   final TimeOfDay? initialTime;
+
+  /// Optional focus node for the input field.
   final FocusNode? focusNode;
+
+  /// Focus node to request after a time is selected.
   final FocusNode? nextFocusNode;
+
+  /// Internal padding for the input field.
   final EdgeInsetsGeometry? contentPadding;
+
+  /// Outer margin for the form field container.
   final EdgeInsetsGeometry? margin;
+
+  /// Widget shown at the beginning of the input field.
   final Widget? prefixIcon;
+
+  /// Custom validation logic for the input.
   final String? Function(String?)? validator;
+
+  /// Callback when a time is selected.
   final Function(TimeOfDay? time, String? stringTime)? onSelect;
+
+  /// Optional theme override for this specific field.
   final FlexiFormTheme? theme;
+
+  /// Font size override for the input text.
   final double? fontSize;
+
+  /// Border radius override for the input field.
   final double? borderRadius;
+
+  /// Background fill color override.
   final Color? fillColor;
+
+  /// Color of the cursor.
   final Color? cursorColor;
+
+  /// Height of the cursor.
   final double? cursorHeight;
+
+  /// Alignment logic for the floating label.
   final FloatingLabelAlignment? floatingLabelAlignment;
+
+  /// Full text style override for the input text.
   final TextStyle? style;
+
+  /// Style override for the label text.
   final TextStyle? labelStyle;
+
+  /// Style override for the hint text.
   final TextStyle? hintStyle;
+
+  /// Style override for the floating label.
   final TextStyle? floatingLabelStyle;
+
+  /// The visual style of the input border (e.g., outline, filled, rounded).
   final FlexiFieldStyle fieldStyle;
 
+  /// Creates a [FlexiTimePicker] for consistent time selection.
   const FlexiTimePicker({
     super.key,
     required this.controller,
@@ -138,7 +201,8 @@ class FlexiTimePicker extends StatelessWidget {
                   fillColor ??
                   appliedFlexiTheme.fillColor ??
                   (isDark
-                      ? Colors.white.withValues(alpha: 0.05)
+                      // ignore: deprecated_member_use
+                      ? Colors.white.withOpacity(0.05)
                       : themeData.colorScheme.surface),
 
               filled:
