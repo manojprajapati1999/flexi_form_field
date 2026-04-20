@@ -75,6 +75,12 @@ class ExampleScreen extends StatefulWidget {
 
 class _ExampleScreenState extends State<ExampleScreen> {
   int _currentStep = 0;
+  bool _checkValue = false;
+  List<String> _selectedFruits = [];
+  String _gender = 'Male';
+  bool _switchValue = false;
+  int _tabIndex = 0;
+  bool _isSwipeEnabled = true;
 
   final List<String> _categories = [
     "Form Demo",
@@ -448,19 +454,32 @@ class _ExampleScreenState extends State<ExampleScreen> {
       const DropdownMenuItem(value: 1, child: Text("Option 1")),
       const DropdownMenuItem(value: 2, child: Text("Option 2")),
     ];
-    return _build12Cases(
-      title: "Dropdown Variations",
-      builder: (style, label, ext, hint, layout) => FlexiDropDown<int>(
-        fieldStyle: style,
-        label: label,
-        externalLabel: ext,
-        hint: hint,
-        fieldLayout: layout,
-        items: items,
-        onChanged: (v) {},
-        theme: _appTheme,
+    return [
+      ..._build12Cases(
+        title: "Dropdown Variations",
+        builder: (style, label, ext, hint, layout) => FlexiDropDown<int>(
+          fieldStyle: style,
+          label: label,
+          externalLabel: ext,
+          hint: hint,
+          fieldLayout: layout,
+          items: items,
+          onChanged: (v) {},
+          theme: _appTheme,
+        ),
       ),
-    );
+      const SizedBox(height: 30),
+      _sectionHeader("Multi-Select Dropdown"),
+      FlexiMultiSelectDropdown(
+        label: "Favorite Fruits",
+        hint: "Select multiple fruits",
+        items: const ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape"],
+        selectedItems: _selectedFruits,
+        onChanged: (values) => setState(() => _selectedFruits = values),
+        theme: _appTheme,
+        isMandatory: true,
+      ),
+    ];
   }
 
   // --- 3. DATE PICKER SHOWCASE ---
@@ -514,6 +533,27 @@ class _ExampleScreenState extends State<ExampleScreen> {
   // --- 6. OTHERS SHOWCASE ---
   List<Widget> _buildOthersShowcase() {
     return [
+      _sectionHeader("Premium Text & Marquee"),
+      const FlexiText(
+        "This is a standard FlexiText widget. It behaves like a normal text.",
+        fontSize: 14,
+      ),
+      const SizedBox(height: 15),
+      const FlexiText(
+        "This text is too long for a single line on most screens, so it will automatically start scrolling using the marquee effect once it detects an overflow condition in auto mode.",
+        fontSize: 16,
+        fontWeight: FontWeight.w900,
+        marquee: MarqueeMode.auto,
+      ),
+      const SizedBox(height: 15),
+      const FlexiText(
+        "FORCE SCROLLING TEXT",
+        fontSize: 18,
+        fontWeight: FontWeight.w900,
+        color: Colors.red,
+        marquee: MarqueeMode.always,
+      ),
+      const SizedBox(height: 30),
       _sectionHeader("Timer"),
       const FlexiTimer(borderRadius: 16),
       const SizedBox(height: 30),
@@ -524,8 +564,276 @@ class _ExampleScreenState extends State<ExampleScreen> {
       FlexiTabBar(
         tabs: const ["Active", "Completed"],
         currentIndex: 0,
-        onChanged: (i) {},
-        borderRadius: 8,
+        onChange: (int index) {  },
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Selection"),
+      FlexiCheckBox(
+        value: _checkValue,
+        label: "Accept Terms & Conditions",
+        isMandatory: true,
+        onChanged: (v) => setState(() => _checkValue = v ?? false),
+        theme: _appTheme,
+      ),
+      const SizedBox(height: 10),
+      FlexiCheckBox(
+        value: !_checkValue,
+        label: "Subscribe to Newsletter",
+        onChanged: (v) => setState(() => _checkValue = !(v ?? false)),
+        theme: _appTheme,
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Gallery & Sliders"),
+      FlexiButton(
+        onTap: () {
+          FlexiImageSlider.show(
+            context,
+            images: [
+              "https://picsum.photos/id/10/800/800",
+              "https://picsum.photos/id/20/800/800",
+              "https://picsum.photos/id/30/800/800",
+              "https://picsum.photos/id/40/800/800",
+            ],
+            theme: _appTheme,
+          );
+        },
+        color: Colors.blueGrey,
+        child: const Text("OPEN IMAGE SLIDER"),
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Dialogs"),
+      FlexiButton(
+        onTap: () {
+          FlexiDeleteDialog.show(
+            context,
+            itemName: "User Profile",
+            onDelete: () {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Deleted successfully")),
+              );
+            },
+            theme: _appTheme,
+          );
+        },
+        color: Colors.redAccent,
+        child: const Text("SHOW DELETE DIALOG"),
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("File Management"),
+      FlexiFilePicker(
+        onSelect: (result) {
+          if (result != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Selected: ${result.files.first.name}"),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor.withValues(alpha: 0.05),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
+              width: 2,
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.cloud_upload_outlined, color: Theme.of(context).primaryColor),
+              const SizedBox(width: 12),
+              Text(
+                "UPLOAD DOCUMENTS",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 1,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Media Selection"),
+      FlexiImagePicker(
+        onSelect: (image) {
+          if (image != null) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Image captured: ${image.name}"),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+          }
+        },
+        theme: _appTheme,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).primaryColor.withValues(alpha: 0.2),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.camera_enhance_rounded, color: Colors.white),
+              const SizedBox(width: 12),
+              Text(
+                "TAKE A PHOTO",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 1,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      const SizedBox(height: 15),
+      FlexiButton(
+        onTap: () {
+          FlexiLogoutDialog.show(
+            context,
+            onLogout: () {
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Logged out successfully")),
+              );
+            },
+            theme: _appTheme,
+          );
+        },
+        color: Colors.black,
+        child: const Text("SHOW LOGOUT DIALOG"),
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Media Rendering"),
+      const FlexiNetworkImage(
+        imageUrl: "https://picsum.photos/800/400",
+        height: 200,
+        width: double.infinity,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      const SizedBox(height: 10),
+      const Text(
+        "Random Image from Picsum",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 12, color: Colors.grey),
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Selection Controls"),
+      Row(
+        children: [
+          FlexiRadioButton<String>(
+            label: "Male",
+            value: "Male",
+            groupValue: _gender,
+            onChanged: (v) => setState(() => _gender = v!),
+            theme: _appTheme,
+          ),
+          const SizedBox(width: 20),
+          FlexiRadioButton<String>(
+            label: "Female",
+            value: "Female",
+            groupValue: _gender,
+            onChanged: (v) => setState(() => _gender = v!),
+            theme: _appTheme,
+          ),
+          const SizedBox(width: 20),
+          FlexiRadioButton<String>(
+            label: "Other",
+            value: "Other",
+            groupValue: _gender,
+            onChanged: (v) => setState(() => _gender = v!),
+            theme: _appTheme,
+          ),
+        ],
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Loading Indicators"),
+      const FlexiScreenLoader(size: 40),
+      const SizedBox(height: 10),
+      const Text(
+        "Platform-aware loader (Cupertino on iOS)",
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 12, color: Colors.grey),
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Toggle Controls"),
+      Row(
+        children: [
+          FlexiSwitch(
+            value: _switchValue,
+            onToggle: (v) => setState(() => _switchValue = v),
+            theme: _appTheme,
+          ),
+          const SizedBox(width: 20),
+          Text(
+            "Notifications: ${_switchValue ? 'ON' : 'OFF'}",
+            style: const TextStyle(fontWeight: FontWeight.w600),
+          ),
+        ],
+      ),
+      const SizedBox(height: 30),
+      _sectionHeader("Tabs & Navigation"),
+      Row(
+        children: [
+          const Text("Enable Swipe:", style: TextStyle(fontWeight: FontWeight.w700)),
+          const SizedBox(width: 10),
+          FlexiSwitch(
+            value: _isSwipeEnabled,
+            width: 50,
+            height: 24,
+            onToggle: (v) => setState(() => _isSwipeEnabled = v),
+            theme: _appTheme,
+          ),
+        ],
+      ),
+      const SizedBox(height: 10),
+      FlexiTabBar(
+        tabs: const ["Tab 1", "Tab 2", "Tab 3"],
+        currentIndex: _tabIndex,
+        onChange: (index) => setState(() => _tabIndex = index),
+        theme: _appTheme,
+      ),
+      SizedBox(
+        height: 100,
+        child: FlexiTabView(
+          currentIndex: _tabIndex,
+          isSwipeEnabled: _isSwipeEnabled,
+          onPageChanged: (index) => setState(() => _tabIndex = index),
+          children: [
+            Container(
+              color: Colors.grey.withValues(alpha: 0.05),
+              alignment: Alignment.center,
+              child: const Text("Content of Tab 1"),
+            ),
+            Container(
+              color: Colors.grey.withValues(alpha: 0.05),
+              alignment: Alignment.center,
+              child: const Text("Content of Tab 2"),
+            ),
+            Container(
+              color: Colors.grey.withValues(alpha: 0.05),
+              alignment: Alignment.center,
+              child: const Text("Content of Tab 3"),
+            ),
+          ],
+        ),
       ),
     ];
   }
