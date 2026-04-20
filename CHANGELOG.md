@@ -1,3 +1,8 @@
+## 3.0.4
+
+- **Maintenance**: Synchronized version numbers across `pubspec.yaml` and `README.md`.
+- **Version Bump**: Updated package version to `3.0.4`.
+
 ## 3.0.3
 
 - **Documentation**: Updated README.md showcase section with new visuals/information.
