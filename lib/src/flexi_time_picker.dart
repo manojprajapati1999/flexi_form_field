@@ -202,7 +202,7 @@ class FlexiTimePicker extends StatelessWidget {
                   appliedFlexiTheme.fillColor ??
                   (isDark
                       // ignore: deprecated_member_use
-                      ? Colors.white.withOpacity(0.05)
+                      ? Colors.white.withValues(alpha: 0.05)
                       : themeData.colorScheme.surface),
 
               filled:

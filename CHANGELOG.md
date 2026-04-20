@@ -1,3 +1,33 @@
+## 4.0.1
+
+- **Fix**: Resolved duplicate export warning for `src/flexi_tab_bar.dart` in the main entry point.
+- **Maintenance**: Migrated all deprecated `.withOpacity()` calls to the modern `.withValues()` method for enhanced color precision and future-proofing.
+- **Stability**: Standardized internal analysis to achieve 0 warnings and improved pub.dev health score.
+
+## 4.0.0
+
+🚀 **Massive Widget Expansion - Premium Productivity Suite**
+
+### ✨ New Widgets Added:
+- **FlexiMultiSelectDropdown**: Highly customizable multi-select dropdown with animated transitions, search capabilities, and interactive tag-based selection UI.
+- **FlexiImageSlider**: Premium full-screen image carousel for viewing multiple images (Remote/Local) with smooth animations and integrated dots indicator.
+- **FlexiText**: Intelligent text widget with marquee support. Automatically detects overflow and scrolls text in `auto` mode, or can be forced with `always` mode.
+- **FlexiTabBar & FlexiTabView**: A modern, integrated tab navigation system with optional "Swipe to Change" functionality.
+- **FlexiFilePicker**: Standardized file selection widget with built-in Android 13+ permission handling (SDK 33 support).
+- **FlexiImagePicker**: Stylized camera/gallery selection dialog with premium monochrome aesthetics.
+- **FlexiSwitch**: Animated, highly customizable toggle switch with integrated "On/Off" labels.
+- **FlexiRadioButton**: Accessible and stylish radio buttons with interactive labels (clicking the text toggles the radio).
+- **FlexiCheckBox**: Premium checkbox implementation with clean, high-contrast states.
+- **FlexiScreenLoader**: Platform-aware loading indicators (Cupertino on iOS, Material on Android) that respect the library theme.
+- **FlexiDeleteDialog**: A modern confirmation dialog specifically designed for delete actions.
+- **FlexiLogoutDialog**: A specialized logout confirmation dialog with a branded, high-contrast header.
+
+### 🛠️ Dependencies & Improvements:
+- **New Dependencies**: Added `animated_custom_dropdown`, `carousel_slider`, `marquee`, and `flutter_switch`.
+- **Permission Management**: Standardized Android permission logic using `permission_manager`.
+- **Refined Example App**: Updated the showcase application with new sections for Media, Selection, and Advanced Dropdowns.
+- **Theming**: All new widgets fully integrate with `FlexiFormTheme` for out-of-the-box monochrome consistency.
+
 ## 3.0.4
 
 - **Maintenance**: Synchronized version numbers across `pubspec.yaml` and `README.md`.

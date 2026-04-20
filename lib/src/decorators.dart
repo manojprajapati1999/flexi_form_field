@@ -138,14 +138,14 @@ class FlexiDecorators {
       case FlexiFieldStyle.underline:
         return UnderlineInputBorder(
           // ignore: deprecated_member_use
-          borderSide: BorderSide(color: color.withOpacity(0.1)),
+          borderSide: BorderSide(color: color.withValues(alpha: 0.1)),
         );
 
       case FlexiFieldStyle.rounded:
         return OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 30),
           // ignore: deprecated_member_use
-          borderSide: BorderSide(color: color.withOpacity(0.1)),
+          borderSide: BorderSide(color: color.withValues(alpha: 0.1)),
         );
 
       case FlexiFieldStyle.minimal:
@@ -155,7 +155,7 @@ class FlexiDecorators {
         return OutlineInputBorder(
           borderRadius: BorderRadius.circular(effectiveRadius),
           // ignore: deprecated_member_use
-          borderSide: BorderSide(color: color.withOpacity(0.1)),
+          borderSide: BorderSide(color: color.withValues(alpha: 0.1)),
         );
     }
   }

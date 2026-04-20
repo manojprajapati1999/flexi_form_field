@@ -311,7 +311,7 @@ class FlexiTextFieldBuilder {
           fillColor ??
           theme.fillColor ??
           (isDark
-              ? Colors.white.withOpacity(0.05) // ignore: deprecated_member_use
+              ? Colors.white.withValues(alpha: 0.05) // ignore: deprecated_member_use
               : themeData.colorScheme.surface),
 
       border: FlexiDecorators.border(

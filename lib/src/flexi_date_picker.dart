@@ -214,7 +214,7 @@ class FlexiDatePicker extends StatelessWidget {
               ),
               floatingLabelAlignment: floatingLabelAlignment,
 
-              fillColor: fillColor ?? appliedFlexiTheme.fillColor ?? (isDark ? Colors.white.withOpacity(0.05) : themeData.colorScheme.surface), // ignore: deprecated_member_use
+              fillColor: fillColor ?? appliedFlexiTheme.fillColor ?? (isDark ? Colors.white.withValues(alpha: 0.05) : themeData.colorScheme.surface), // ignore: deprecated_member_use
 
               filled:
                   fillColor != null ||

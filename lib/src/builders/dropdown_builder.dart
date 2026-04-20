@@ -69,7 +69,7 @@ class FlexiDropdownBuilder {
               if (item != items.last) ...[
                 const SizedBox(height: 8),
                 Divider(
-                  color: themeData.dividerColor.withOpacity(0.5), // ignore: deprecated_member_use
+                  color: themeData.dividerColor.withValues(alpha: 0.5), // ignore: deprecated_member_use
                   height: 1,
                   thickness: 0.5,
                 ),
@@ -251,7 +251,7 @@ class FlexiDropdownBuilder {
       floatingLabelBehavior: layout == FlexiFieldLayout.floating ? FloatingLabelBehavior.auto : FloatingLabelBehavior.never,
       filled: fillColor != null || theme.fillColor != null || isDark || style == FlexiFieldStyle.filled,
       // ignore: deprecated_member_use
-      fillColor: fillColor ?? theme.fillColor ?? (isDark ? Colors.white.withOpacity(0.05) : themeData.colorScheme.surface),
+      fillColor: fillColor ?? theme.fillColor ?? (isDark ? Colors.white.withValues(alpha: 0.05) : themeData.colorScheme.surface),
       border: FlexiDecorators.border(style, theme, color: cursorColor, borderRadius: borderRadius),
       focusedBorder: FlexiDecorators.focusedBorder(style, theme, color: cursorColor, borderRadius: borderRadius),
       enabledBorder: FlexiDecorators.enabledBorder(style, theme, color: themeData.dividerColor, borderRadius: borderRadius),

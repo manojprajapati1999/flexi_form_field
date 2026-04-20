@@ -1,4 +1,4 @@
-# flexi_form_field (v3.0.4)
+# flexi_form_field (v4.0.1)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
@@ -19,24 +19,35 @@ A flexible and highly customizable Flutter form widget suite with built-in valid
     <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg" width="180"/></td>
     <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg" width="180"/></td>
   </tr>
-</table>
+</table>    
 
 ---
 
 ## Widgets
 
-| Widget | Description |
-|---|---|
-| `FlexiFormField` | Customizable text input with built-in validators and formatters |
-| `FlexiDropDown<T>` | Generic type-safe dropdown selector |
-| `FlexiDatePicker` | Date picker with formatted output |
-| `FlexiTimePicker` | Material time picker |
-| `FlexiDateTimePicker` | Combined date + time selection in a single flow |
-| `FlexiAutoComplete<T>` | Generic searchable autocomplete field |
-| `FlexiButton` | Customizable button with gradient, shadow, and border support |
-| `FlexiStepper` | Horizontal animated stepper with auto-scroll |
-| `FlexiTabBar` | Segmented tab control with animated indicator |
-| `FlexiTimer` | Functional timer with start, pause, resume, and stop |
+| Widget | Category | Description |
+|---|---|---|
+| `FlexiFormField` | Input | Customizable text input with built-in validators and formatters |
+| `FlexiMultiSelectDropdown` | Selection | **(New)** Tag-based multi-select with search and animations |
+| `FlexiImageSlider` | Media | **(New)** Full-screen premium carousel for remote/local images |
+| `FlexiText` | Utility | **(New)** Intelligent text with automatic marquee/scrolling |
+| `FlexiFilePicker` | Media | **(New)** Standardized file selection with Android 13+ support |
+| `FlexiImagePicker` | Media | **(New)** Camera/Gallery selection dialog with premium styling |
+| `FlexiSwitch` | Toggle | **(New)** Animated toggle switch with integrated On/Off labels |
+| `FlexiTabBar & FlexiTabView` | Navigation | **(New)** Integrated tabs system with "Swipe to Change" support |
+| `FlexiRadioButton` | Selection | **(New)** Accessible and stylish radio buttons |
+| `FlexiCheckBox` | Selection | **(New)** Premium high-contrast checkboxes |
+| `FlexiScreenLoader` | Utility | **(New)** Platform-aware loaders (Cupertino/Material) |
+| `FlexiDeleteDialog` | Dialog | **(New)** Stylized confirmation dialog for deletions |
+| `FlexiLogoutDialog` | Dialog | **(New)** Branded logout confirmation dialog |
+| `FlexiDropDown<T>` | Selection | Generic type-safe dropdown selector |
+| `FlexiDatePicker` | Pickers | Date picker with formatted output |
+| `FlexiTimePicker` | Pickers | Material time picker |
+| `FlexiDateTimePicker` | Pickers | Combined date + time selection |
+| `FlexiAutoComplete<T>` | Selection | Generic searchable autocomplete field |
+| `FlexiButton` | Action | Customizable button with gradient and shadows |
+| `FlexiStepper` | Navigation | Horizontal animated stepper with auto-scroll |
+| `FlexiTimer` | Utility | Functional timer with playback controls |
 
 ---
 
@@ -46,7 +57,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^3.0.4
+  flexi_form_field: ^4.0.1
 ```
 
 Then run:
@@ -553,8 +564,15 @@ FlexiTimer(
 
 | Package | Purpose |
 |---|---|
-| `intl: ^0.20.2` | Date formatting for `FlexiDatePicker` and `FlexiDateTimePicker` |
-| `flutter_typeahead: ^6.0.0` | Suggestion list engine for `FlexiAutoComplete` |
+| `intl: ^0.20.2` | Date formatting |
+| `flutter_typeahead: ^6.0.0` | Autocomplete engine |
+| `animated_custom_dropdown: ^3.1.1` | Multi-select engine |
+| `carousel_slider: ^5.1.2` | Image carousel |
+| `marquee: ^2.2.3` | Text scrolling |
+| `flutter_switch: ^0.3.2` | Animated toggles |
+| `image_picker: ^1.1.2` | Camera/Gallery access |
+| `file_picker: ^8.1.2` | File system access |
+| `permission_manager: ^2.0.9` | Permission handling |
 
 ---
 

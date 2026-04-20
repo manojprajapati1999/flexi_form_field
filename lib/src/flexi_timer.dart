@@ -139,7 +139,7 @@ class _FlexiTimerState extends State<FlexiTimer> {
 
     final effectiveBgColor = isDark
         // ignore: deprecated_member_use
-        ? Colors.white.withOpacity(0.05)
+        ? Colors.white.withValues(alpha: 0.05)
         : Colors.white;
     final effectiveTextColor = isDark ? Colors.white : Colors.black;
     final radius = widget.borderRadius ?? 16.0;
@@ -156,7 +156,7 @@ class _FlexiTimerState extends State<FlexiTimer> {
             : [
           BoxShadow(
             // ignore: deprecated_member_use
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),

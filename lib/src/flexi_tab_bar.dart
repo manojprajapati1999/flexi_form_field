@@ -1,146 +1,160 @@
 import 'package:flutter/material.dart';
+import 'theme.dart';
 
-/// A premium, segmented tab bar widget with smooth transitions and rich styling.
+/// A premium, stylized tab bar widget.
 ///
-/// [FlexiTabBar] provides a modern alternative to traditional tab bars, 
-/// featuring a capsule-like design with animated selection indicators 
-/// and support for custom gradients.
+/// [FlexiTabBar] provides a modern, monochrome tab navigation experience.
+/// It is designed to be used in conjunction with [FlexiTabView] or a [PageView].
 class FlexiTabBar extends StatelessWidget {
-  /// The list of labels for each tab.
+  /// The list of tab labels.
   final List<String> tabs;
 
-  /// Callback when the user selects a tab.
-  final Function(int index) onChanged;
+  /// Callback when a tab is tapped.
+  final Function(int index) onChange;
 
-  /// The index of the currently selected tab.
+  /// The currently selected tab index.
   final int currentIndex;
 
-  /// Color of the active tab indicator.
-  final Color? activeColor;
-
-  /// Color of the inactive tabs.
-  final Color? inactiveColor;
-
-  /// Background color of the entire tab bar container.
-  final Color? backgroundColor;
-
-  /// Text color for the active tab label.
-  final Color? activeTextColor;
-
-  /// Text color for the inactive tab labels.
-  final Color? inactiveTextColor;
-
-  /// Optional gradient for the active tab indicator.
-  final Gradient? activeGradient;
-
-  /// Font size for the tab labels.
-  final double? fontSize;
+  /// Font size for the tab labels (default: 15).
+  final double fontSize;
 
   /// Outer margin for the tab bar container.
   final EdgeInsetsGeometry? margin;
 
-  /// Internal padding for the tab bar container.
-  final EdgeInsetsGeometry? padding;
+  /// Optional theme override for this specific widget.
+  final FlexiFormTheme? theme;
 
-  /// Border radius for the tab bar corners.
-  final double? borderRadius;
-
-  /// Height override for the tab bar.
-  final double? height;
-
-  /// Creates a [FlexiTabBar] with premium aesthetics and smooth animations.
+  /// Creates a [FlexiTabBar] widget.
   const FlexiTabBar({
     super.key,
     required this.tabs,
-    required this.onChanged,
+    required this.onChange,
     required this.currentIndex,
-    this.activeColor,
-    this.inactiveColor,
-    this.backgroundColor,
-    this.activeTextColor,
-    this.inactiveTextColor,
-    this.activeGradient,
-    this.fontSize,
+    this.fontSize = 15,
     this.margin,
-    this.padding,
-    this.borderRadius,
-    this.height,
+    this.theme,
   });
 
   @override
   Widget build(BuildContext context) {
-    final themeData = Theme.of(context);
-    final isDark = themeData.brightness == Brightness.dark;
+    final appliedFlexiTheme = theme ?? const FlexiFormTheme();
+    final primaryColor = appliedFlexiTheme.primaryColor;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    final effectiveActiveColor =
-        activeColor ?? (isDark ? Colors.white : Colors.black);
-    final effectiveBgColor =
-        backgroundColor ??
-        // ignore: deprecated_member_use
-        (isDark ? Colors.white.withOpacity(0.1) : Colors.grey.shade200);
+    return IntrinsicHeight(
+      child: Container(
+        alignment: Alignment.center,
+        clipBehavior: Clip.hardEdge,
+        decoration: BoxDecoration(
+          color: isDark ? Colors.white.withValues(alpha: 0.05) : const Color(0XFFDDDFDE),
+          borderRadius: appliedFlexiTheme.borderRadius,
+        ),
+        margin: margin ?? const EdgeInsets.fromLTRB(16, 8, 16, 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: tabs.asMap().entries.map((entry) {
+            final index = entry.key;
+            final label = entry.value;
+            final isSelected = currentIndex == index;
 
-    final effectiveActiveText =
-        activeTextColor ?? (isDark ? Colors.black : Colors.white);
-    final effectiveInactiveText = inactiveTextColor ?? themeData.hintColor;
-
-    final radius = borderRadius ?? 12.0;
-
-    return Container(
-      height: height,
-      margin: margin ?? const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      padding: padding ?? const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: effectiveBgColor,
-        borderRadius: BorderRadius.circular(radius),
-      ),
-      child: Row(
-        children: tabs.asMap().entries.map((entry) {
-          final index = entry.key;
-          final label = entry.value;
-          final isActive = currentIndex == index;
-
-          return Expanded(
-            child: GestureDetector(
-              onTap: () => onChanged(index),
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                  color: isActive
-                      ? (activeGradient == null ? effectiveActiveColor : null)
-                      : Colors.transparent,
-                  gradient: isActive ? activeGradient : null,
-                  borderRadius: BorderRadius.circular(
-                    radius - 2,
-                  ), // slightly smaller for nested look
-                  boxShadow: isActive && !isDark
-                      ? [
-                          BoxShadow(
-                            // ignore: deprecated_member_use
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ]
-                      : null,
-                ),
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    color: isActive
-                        ? effectiveActiveText
-                        : effectiveInactiveText,
-                    fontSize: fontSize ?? 14,
-                    fontWeight: isActive ? FontWeight.bold : FontWeight.w500,
+            return Expanded(
+              child: InkWell(
+                onTap: () => onChange(index),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.easeInOut,
+                  alignment: Alignment.center,
+                  height: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: isSelected ? primaryColor : Colors.transparent,
+                    borderRadius: appliedFlexiTheme.borderRadius,
                   ),
-                  textAlign: TextAlign.center,
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                      color: isSelected ? Colors.white : (isDark ? Colors.white70 : Colors.black87),
+                      fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
+                      fontSize: fontSize,
+                      letterSpacing: isSelected ? 0.5 : 0,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
-            ),
-          );
-        }).toList(),
+            );
+          }).toList(),
+        ),
       ),
+    );
+  }
+}
+
+/// A companion widget for [FlexiTabBar] that displays the content of the tabs.
+///
+/// [FlexiTabView] supports optional swipe navigation and integrates seamlessly 
+/// with [FlexiTabBar] state.
+class FlexiTabView extends StatefulWidget {
+  /// The widgets to display for each tab.
+  final List<Widget> children;
+
+  /// The currently active tab index.
+  final int currentIndex;
+
+  /// Callback when the user swipes to change the tab.
+  final ValueChanged<int>? onPageChanged;
+
+  /// Whether to enable swipe navigation (default: true).
+  final bool isSwipeEnabled;
+
+  /// Creates a [FlexiTabView] widget.
+  const FlexiTabView({
+    super.key,
+    required this.children,
+    required this.currentIndex,
+    this.onPageChanged,
+    this.isSwipeEnabled = true,
+  });
+
+  @override
+  State<FlexiTabView> createState() => _FlexiTabViewState();
+}
+
+class _FlexiTabViewState extends State<FlexiTabView> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: widget.currentIndex);
+  }
+
+  @override
+  void didUpdateWidget(FlexiTabView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.currentIndex != widget.currentIndex) {
+      _pageController.animateToPage(
+        widget.currentIndex,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      physics: widget.isSwipeEnabled ? const BouncingScrollPhysics() : const NeverScrollableScrollPhysics(),
+      controller: _pageController,
+      onPageChanged: widget.onPageChanged,
+      children: widget.children,
     );
   }
 }
