@@ -1,4 +1,4 @@
-# flexi_form_field (v3.0.2)
+# flexi_form_field (v3.0.3)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
@@ -46,7 +46,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^3.0.2
+  flexi_form_field: ^3.0.3
 ```
 
 Then run:
