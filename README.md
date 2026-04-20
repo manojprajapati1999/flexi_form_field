@@ -4,9 +4,22 @@ A flexible and highly customizable Flutter form widget suite with built-in valid
 
 ## 🖼 Showcase
 
-|                                                              Form Demo                                                              |                                                         Text Fields                                                          |                                                          Auto-Complete                                                          |                                                         Date Pickers                                                          |                                                       Components                                                        |
-|:-----------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------:|
-| <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg" height="400"> | <img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg" height="400"> |
+<table>
+  <tr>
+    <th>Form Demo</th>
+    <th>Text Fields</th>
+    <th>Auto-Complete</th>
+    <th>Date Pickers</th>
+    <th>Components</th>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.jpg" width="180"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.jpg" width="180"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.jpg" width="180"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg" width="180"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg" width="180"/></td>
+  </tr>
+</table>
 
 ---
 

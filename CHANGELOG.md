@@ -1,3 +1,7 @@
+## 3.0.3
+
+- **Documentation**: Updated README.md showcase section with new visuals/information.
+
 ## 3.0.2
 
 🌍 **Platform Support & Modernization**
