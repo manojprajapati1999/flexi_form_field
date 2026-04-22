@@ -1,5 +1,5 @@
 
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +42,7 @@ class FlexiFilePicker extends StatelessWidget {
       onTap: () async {
         bool hasPermission = false;
 
-        if (Platform.isAndroid) {
+        if (defaultTargetPlatform == TargetPlatform.android) {
           final deviceInfo = await DeviceInfoPlugin().androidInfo;
 
           if (deviceInfo.version.sdkInt > 32) {
@@ -80,7 +80,7 @@ class FlexiFilePicker extends StatelessWidget {
 
         if (hasPermission) {
           try {
-            final result = await FilePicker.platform.pickFiles(
+            final result = await FilePicker.pickFiles(
               allowMultiple: allowMultiple,
               allowedExtensions: type == FileType.custom ? allowedExtensions : null,
               type: type,

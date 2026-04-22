@@ -1,3 +1,12 @@
+## 4.0.2
+
+- **Breaking Change**: Increased minimum Dart SDK constraint to `^3.10.0` to support modern dependency requirements.
+- **Dependencies**: Force-upgraded all core dependencies to their absolute latest versions (`device_info_plus: ^13.1.0`, `file_picker: ^11.0.2`, `image_picker: ^1.2.1`, `marquee: ^2.3.0`, `flutter_lints: ^6.0.0`).
+- **Web & Multi-Platform**: Fully resolved `dart:io` incompatibilities across all library exports, ensuring 100% clean multi-platform support including Web.
+- **Maintenance**: Refactored `FlexiFilePicker` to utilize the new static `FilePicker` API introduced in version 11.0.0.
+- **Static Analysis**: Silenced deprecation warnings for `Radio` widgets in environments running Flutter 3.35+ while maintaining backward compatibility for current stable versions.
+- **Optimized for Pub.dev**: Added topics and enhanced metadata for better discoverability and health scores.
+
 ## 4.0.1
 
 - **Fix**: Resolved duplicate export warning for `src/flexi_tab_bar.dart` in the main entry point.

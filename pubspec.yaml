@@ -1,11 +1,30 @@
 name: flexi_form_field
 description: "A flexible and customizable TextFormField widget for Flutter with built-in validation, formatting, mandatory fields, prefix/suffix icons, and more."
-version: 4.0.1
+version: 4.0.2
 homepage: https://github.com/manojprajapati1999/flexi_form_field
 repository: https://github.com/manojprajapati1999/flexi_form_field
 
+topics:
+  - form
+  - textfield
+  - dropdown
+  - ui
+  - widgets
+
+screenshots:
+  - description: 'Premium Form Showcase'
+    path: assets/images/form_demo.jpg
+  - description: 'Advanced Text Fields'
+    path: assets/images/text_field.jpg
+  - description: 'Intelligent Auto-Complete'
+    path: assets/images/auto_complete.jpg
+  - description: 'Stylish Date Pickers'
+    path: assets/images/date_picker.jpg
+  - description: 'Custom Components'
+    path: assets/images/other.jpg
+
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.10.0
 
 platforms:
   android:
@@ -20,19 +39,19 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
   flutter_typeahead: ^6.0.0
-  file_picker: ^8.1.2
-  device_info_plus: ^11.1.1
+  file_picker: ^11.0.2
+  device_info_plus: ^12.4.0
   permission_manager: ^2.0.9
-  image_picker: ^1.1.2
+  image_picker: ^1.2.1
   animated_custom_dropdown: ^3.1.1
   flutter_switch: ^0.3.2
-  marquee: ^2.2.3
+  marquee: ^2.3.0
   carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   uses-material-design: true

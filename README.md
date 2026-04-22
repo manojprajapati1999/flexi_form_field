@@ -1,4 +1,4 @@
-# flexi_form_field (v4.0.1)
+# flexi_form_field (v4.0.2)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
@@ -57,8 +57,12 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^4.0.1
+  flexi_form_field: ^4.0.2
 ```
+
+> [!IMPORTANT]
+> **Minimum SDK Requirements:**
+> This package requires **Dart SDK ^3.10.0** to support the latest dependency versions (including `device_info_plus` v13). Ensure your Flutter environment is up-to-date.
 
 Then run:
 
@@ -258,6 +262,57 @@ FlexiDropDown<String>(
 ```
 
 Shares the same `fieldStyle`, `fieldLayout`, `wrapper`, `theme`, `isMandatory`, `prefixIcon`, `suffixIcon`, `label`, `externalLabel`, `hint`, `fillColor`, `borderRadius`, `fontSize`, and style override properties as `FlexiFormField`.
+
+---
+
+## FlexiMultiSelectDropdown
+
+A highly customizable multi-select dropdown with animated tag-based selection.
+
+```dart
+List<String> _selectedItems = [];
+
+FlexiMultiSelectDropdown(
+  label: "Interests",
+  hint: "Select your hobbies",
+  items: const ["Coding", "Reading", "Hiking", "Gaming", "Cooking"],
+  selectedItems: _selectedItems,
+  onChanged: (values) {
+    setState(() => _selectedItems = values);
+  },
+  theme: myTheme,
+  isMandatory: true,
+)
+```
+
+---
+
+## FlexiRadioButton\<T\>
+
+Stylish and accessible radio buttons with interactive labels.
+
+```dart
+String _gender = "Male";
+
+Row(
+  children: [
+    FlexiRadioButton<String>(
+      label: "Male",
+      value: "Male",
+      groupValue: _gender,
+      onChanged: (v) => setState(() => _gender = v!),
+      theme: myTheme,
+    ),
+    FlexiRadioButton<String>(
+      label: "Female",
+      value: "Female",
+      groupValue: _gender,
+      onChanged: (v) => setState(() => _gender = v!),
+      theme: myTheme,
+    ),
+  ],
+)
+```
 
 ---
 
@@ -568,11 +623,12 @@ FlexiTimer(
 | `flutter_typeahead: ^6.0.0` | Autocomplete engine |
 | `animated_custom_dropdown: ^3.1.1` | Multi-select engine |
 | `carousel_slider: ^5.1.2` | Image carousel |
-| `marquee: ^2.2.3` | Text scrolling |
+| `marquee: ^2.3.0` | Text scrolling |
 | `flutter_switch: ^0.3.2` | Animated toggles |
-| `image_picker: ^1.1.2` | Camera/Gallery access |
-| `file_picker: ^8.1.2` | File system access |
+| `image_picker: ^1.2.1` | Camera/Gallery access |
+| `file_picker: ^11.0.2` | File system access |
 | `permission_manager: ^2.0.9` | Permission handling |
+| `device_info_plus: ^13.1.0` | Device information |
 
 ---
 

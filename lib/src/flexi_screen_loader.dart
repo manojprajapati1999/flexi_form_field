@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'theme.dart';
@@ -39,7 +39,7 @@ class FlexiScreenLoader extends StatelessWidget {
       child: SizedBox(
         width: size,
         height: size,
-        child: Platform.isIOS
+        child: defaultTargetPlatform == TargetPlatform.iOS
             ? CupertinoActivityIndicator(
                 color: primaryColor,
                 radius: (size ?? 20) / 2,
