@@ -690,7 +690,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.camera_enhance_rounded, color: Colors.white),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Text(
                 "TAKE A PHOTO",
                 style: TextStyle(
