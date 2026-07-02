@@ -1,3 +1,7 @@
+## 4.0.4
+
+- **Update show case
+ 
 ## 4.0.3
 
 - **WASM Compatibility**: Resolved WASM/WebAssembly runtime compatibility issues by introducing conditional exports/imports (`stub` fallback architecture) for platform-specific dependencies like `dart:io` and `file_picker`.

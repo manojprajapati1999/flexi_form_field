@@ -1,4 +1,4 @@
-# flexi_form_field (v4.0.3)
+# flexi_form_field (v4.0.4)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
@@ -9,8 +9,6 @@ A flexible and highly customizable Flutter form widget suite with built-in valid
     <th>Form Demo</th>
     <th>Text Fields</th>
     <th>Auto-Complete</th>
-    <th>Date Pickers</th>
-    <th>Components</th>
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.png" width="200"/></td>
@@ -55,7 +53,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^4.0.3
+  flexi_form_field: ^4.0.4
 ```
 
 > [!IMPORTANT]
