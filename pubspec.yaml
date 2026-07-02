@@ -13,15 +13,11 @@ topics:
 
 screenshots:
   - description: 'Premium Form Showcase'
-    path: assets/images/form_demo.jpg
+    path: assets/images/form_demo.png
   - description: 'Advanced Text Fields'
-    path: assets/images/text_field.jpg
+    path: assets/images/text_field.png
   - description: 'Intelligent Auto-Complete'
-    path: assets/images/auto_complete.jpg
-  - description: 'Stylish Date Pickers'
-    path: assets/images/date_picker.jpg
-  - description: 'Custom Components'
-    path: assets/images/other.jpg
+    path: assets/images/auto_complete.png
 
 environment:
   sdk: ^3.10.0
