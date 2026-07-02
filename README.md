@@ -1,4 +1,4 @@
-# flexi_form_field (v4.0.2)
+# flexi_form_field (v4.0.3)
 
 A flexible and highly customizable Flutter form widget suite with built-in validation, rich styling options, and a consistent theming system. Drop-in replacements for common Flutter form UI with minimal boilerplate.
 
@@ -13,11 +13,9 @@ A flexible and highly customizable Flutter form widget suite with built-in valid
     <th>Components</th>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.jpg" width="180"/></td>
-    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.jpg" width="180"/></td>
-    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.jpg" width="180"/></td>
-    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/date_picker.jpg" width="180"/></td>
-    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/other.jpg" width="180"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/form_demo.png" width="200"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/text_field.png" width="200"/></td>
+    <td><img src="https://raw.githubusercontent.com/manojprajapati1999/flexi_form_field/main/assets/images/auto_complete.png" width="200"/></td>
   </tr>
 </table>    
 
@@ -57,7 +55,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_form_field: ^4.0.2
+  flexi_form_field: ^4.0.3
 ```
 
 > [!IMPORTANT]

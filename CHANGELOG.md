@@ -1,3 +1,10 @@
+## 4.0.3
+
+- **WASM Compatibility**: Resolved WASM/WebAssembly runtime compatibility issues by introducing conditional exports/imports (`stub` fallback architecture) for platform-specific dependencies like `dart:io` and `file_picker`.
+- **Dependencies**: Expanded dependency constraints to allow the latest major versions of `animated_custom_dropdown` (`>=3.1.1 <5.0.0`) and `device_info_plus` (`>=12.4.0 <14.0.0`) to avoid pub.dev scoring penalties.
+- **Direct Dependencies**: Added `web: ^1.0.0` as a direct dependency for modern, Wasm-compatible web APIs.
+- **Static Analysis**: Resolved all unused imports and type conflicts to ensure 0 errors/warnings under strict analysis rules.
+
 ## 4.0.2
 
 - **Breaking Change**: Increased minimum Dart SDK constraint to `^3.10.0` to support modern dependency requirements.

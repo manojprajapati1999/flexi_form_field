@@ -1,6 +1,5 @@
 
-import 'dart:io' as io;
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'image_loader/image_loader_platform.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'theme.dart';
@@ -139,9 +138,7 @@ class _FlexiImageSliderState extends State<FlexiImageSlider> {
                               child: const Icon(Icons.broken_image, color: Colors.white38, size: 64),
                             ),
                           )
-                        : (!kIsWeb)
-                            ? Image.file(io.File(image), fit: BoxFit.contain)
-                            : const Center(child: Icon(Icons.broken_image, color: Colors.white38)),
+                        : getFileImageWidget(image, fit: BoxFit.contain),
                   ),
                 );
               }).toList(),
